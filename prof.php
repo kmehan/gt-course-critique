@@ -56,9 +56,10 @@ $name = $name[0];
         float: none !important;
       }
     .dropdown-menu {
-        height:325px;
+       max-height:325px;
         overflow-y:scroll;
      }
+    .prof-flash-gold { background-color: rgb(177, 142, 95) !important; }
     </style>
   </head>
   
@@ -183,6 +184,9 @@ $name = $name[0];
       var url = location.hash.substring(1).split(' ')[0];
       if(url.length == 0) { return false; }
 
+      /* Change to gold */
+      $("a.dropdown-toggle:first").toggleClass("prof-flash-gold");
+
       /* Find the request prof in our filter list */
       if($("body").find("ul#Courses  li  input#"+url+":first").length==1) {
         $("ul#Courses li input").each(function() {
@@ -193,6 +197,7 @@ $name = $name[0];
         });
         dataTable.fnSort([[2, 'desc']]); //Sort Year asc
       }
+      setTimeout(function() { $("a.dropdown-toggle:first").toggleClass("prof-flash-gold"); }, 250);
     }
 
     //prevent dropdown from closing upon selection
@@ -208,7 +213,7 @@ $name = $name[0];
         <p class="pull-right"><a href="#">Back to top</a></p>
         <div class="links">
         </div>
-        Made by <a href="http://critique.gatech.edu/author">SGA Course Critique Committee</a>. Contact them at <a href="mailto:sga@gatech.edu">sga@gatech.edu</a>.<br />
+Made by <a href="author">SGA Course Critique Committee</a>. Open source under <a href="http://www.gnu.org/licenses/gpl.html">GPLv3</a> where applicable. Fork us at <a href="https://github.com/cobookman/gt-course-critique">github</a>.<br />
       </footer>
     </div>
 	</body>

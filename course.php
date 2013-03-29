@@ -18,7 +18,7 @@ if(empty($_GET['id'])) {
 
 //Get Data
   $name = $db->pdo->prepare("SELECT DISTINCT Course FROM Data WHERE courseID LIKE :id");
-  $raw  = $db->pdo->prepare("SELECT profID, Prof, Size, ROUND(AVG(GPA),2), ROUND(AVG(A)), ROUND(AVG(B)), ROUND(AVG(C)), ROUND(AVG(D)), ROUND(AVG(F)), ROUND(AVG(W)) FROM Data WHERE courseID Like :id GROUP BY Prof");
+  $raw  = $db->pdo->prepare("SELECT profID, Prof, Size, ROUND(AVG(GPA),2), ROUND(AVG(A)), ROUND(AVG(B)), ROUND(AVG(C)), ROUND(AVG(D)), ROUND(AVG(F)), ROUND(AVG(W)) FROM Data WHERE courseID Like :id AND GPA != 0 GROUP BY Prof");
   $avg  = $db->pdo->prepare("SELECT ROUND(AVG(GPA),2), ROUND(AVG(A)), ROUND(AVG(B)), ROUND(AVG(C)), ROUND(AVG(D)), ROUND(AVG(F)) FROM Data WHERE courseID Like :id AND GPA !=0 ");
 
 //Check if query executes
@@ -57,7 +57,7 @@ $name = $name[0];
         float: none !important;
       }
      .dropdown-menu {
-	height:325px;
+	max-height:325px;
 	overflow-y:scroll;
      }
     </style>
@@ -183,7 +183,8 @@ $name = $name[0];
       <p class="pull-right"><a href="#">Back to top</a></p>
       <div class="links">
       </div>
-      Made by <a href="http://critique.gatech.edu/author">SGA Course Critique Committee</a>. Contact them at <a href="mailto:sga@gatech.edu">sga@gatech.edu</a>.<br />
+Made by <a href="author">SGA Course Critique Committee</a>. Open source under <a href="http://www.gnu.org/licenses/gpl.html">GPLv3</a> where applicable. Fork us at <a href="https://github.com/cobookman/gt-course-critique">github</a>.<br />
+
     </footer>
     </div>
 	</body>

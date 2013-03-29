@@ -8,7 +8,7 @@ function search(query) {
   }
   $.ajax({
         type: "GET",
-        url:  "/search-temp.php",
+        url:  "/search.php",
         data: 'query='+query, //the * will hit performance quite a bit, may need to be removed
         dataType: "JSON",
         success: function(msg) { showSearch(msg); }
