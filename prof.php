@@ -32,35 +32,25 @@ $name = $name[0];
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="utf-8">
+    <meta charset="utf-8" />
     <title>Course Critique - <?php echo $name; ?></title>
  <!--   <meta name="viewport" content="width=device-width, initial-scale=1.0"> -->
-    <meta name="description" content="Historical Course GPA information provided by SGA">
-    <meta name="author" content="SGA - Georgia Institute of Technology">
+    <meta name="description" content="Historical Course GPA information provided by SGA" />
+    <meta name="author" content="SGA - Georgia Institute of Technology" />
 
     <!--[if lt IE 9]>
       <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
 
-    <link href="bootstrap.min.css" rel="stylesheet">
-    <link href="default/bootstrap-responsive.min.css" rel="stylesheet"> 
-    <link href="css/bootswatch.css" rel="stylesheet">
+    <link href="bootstrap.min.css" rel="stylesheet" />
+    <link href="default/bootstrap-responsive.min.css" rel="stylesheet" />
+    <link href="css/bootswatch.css" rel="stylesheet" />
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
     <!-- DataTables -->
     <script src="js/dataTables/jquery.dataTables.js"></script>
     <script src="js/dataTables/DT_bootstrap.js"></script>
-    <link rel="stylesheet" type="text/css" href="css/dataTables/DT_bootstrap.css">
-    <style>
-      .center-table {
-        margin: 0 auto !important;
-        float: none !important;
-      }
-    .dropdown-menu {
-       max-height:325px;
-        overflow-y:scroll;
-     }
-    .prof-flash-gold { background-color: rgb(177, 142, 95) !important; }
-    </style>
+    <link rel="stylesheet" type="text/css" href="css/dataTables/DT_bootstrap.css" />
+    <link rel="stylesheet" type="text/css" href="css/prof.css" />
   </head>
   
   <body>
