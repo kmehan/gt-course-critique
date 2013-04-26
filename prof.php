@@ -9,6 +9,7 @@ include("config.php");
 //Check if the ID is set/non-empty.
 if(empty($_GET['id'])) {
   header("Location: $rootURL"); //Redirect back to searchbar
+  exit();
 } else {
   $profID = $_GET['id'];
 }
@@ -23,7 +24,7 @@ if(empty($_GET['id'])) {
 //Check if query execute
   if(!$raw->execute(array(":id"=>$profID)) || !$avg->execute(array(":id"=>$profID)) || !$name->execute(array(":id"=>$profID))) {
     //Query Failed TODO BETTER ERROR HANDLING - TRY - CATCH
-    die("Uh-Oh the database had an error");
+    die("Uh-oh! The database had an error.");
   }
 //Get prof's name
 $name = $name->fetch(PDO::FETCH_NUM);
@@ -50,7 +51,7 @@ $name = $name[0];
     <script src="js/dataTables/jquery.dataTables.js"></script>
     <script src="js/dataTables/DT_bootstrap.js"></script>
     <link rel="stylesheet" type="text/css" href="css/dataTables/DT_bootstrap.css" />
-    <link rel="stylesheet" type="text/css" href="css/prof.css" />
+    <link rel="stylesheet" type="text/css" href="css/ext.css" />
   </head>
   
   <body>
