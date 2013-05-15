@@ -1,7 +1,7 @@
-
+var clippy_easter_hold = false;
 function search(query) {
   if(query=="George P. Burdell" || query=="Colin Bookman") {
-    clippy();
+    clippy_easter();
   }
   if($.trim(query)==0) {
     return false;
@@ -47,7 +47,12 @@ function showSearch(msg) {
 $("#searchResults").html(output);
 return true;
 }
-function clippy() {
+function clippy_easter() {
+  if(clippy_easter_hold == false) {
+    clippy_easter_hold = true;
+  } else {
+    return false;
+  }
   //Load Clippy CSS
   $('head').append('<link rel="stylesheet" href="js/clippy/build/clippy.css" type="text/css" />');
   //Load clippy js

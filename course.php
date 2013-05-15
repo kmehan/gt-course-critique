@@ -40,13 +40,13 @@ $name = $name[0];
     <meta name="author" content="SGA - Georgia Institute of Technology">
 
     <!--[if lt IE 9]>
-      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+      <script src="https://html5shim.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
 
     <link href="bootstrap.min.css" rel="stylesheet"> 
     <link href="default/bootstrap-responsive.min.css" rel="stylesheet">  
     <link href="css/bootswatch.css" rel="stylesheet">
-    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+    <script src="js/jquery.min.js"></script>
     <!-- DataTables -->
     <script src="js/dataTables/jquery.dataTables.js"></script>
     <script src="js/dataTables/DT_bootstrap.js"></script>
@@ -73,7 +73,7 @@ $name = $name[0];
         <table class="table table-striped table-ordered">  
           <thead>
             <tr>
-              <th>Avg Marks</th>
+              <th>Average Marks</th>
               <th>GPA</th>
               <th>A%</th>
               <th>B%</th>

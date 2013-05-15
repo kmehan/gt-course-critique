@@ -2,15 +2,14 @@
 /**
 *   Takes in a query for ElasticSearch
 *   Outputs the 'hits' in JSON
- */
-include("config.php");
+*/
 $blacklist = array('"', "'", '\\');
 if(empty($_GET['query'])) {
   die();
 }
 $queryString = trim($_GET['query']);
 $queryString = str_replace($blacklist, "", $queryString);
-$ch = curl_init($elasticSearchURL);
+$ch = curl_init('http://web-misc1.gatech.edu:9200/class,prof/_search');
 $qry = '{
           "query" : { 
             "query_string" : { 

@@ -39,13 +39,13 @@ $name = $name[0];
     <meta name="author" content="SGA - Georgia Institute of Technology">
 
     <!--[if lt IE 9]>
-      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+      <script src="https://html5shim.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
 
     <link href="bootstrap.min.css" rel="stylesheet">
     <link href="default/bootstrap-responsive.min.css" rel="stylesheet"> 
     <link href="css/bootswatch.css" rel="stylesheet">
-    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+    <script src="js/jquery.min.js"></script>
     <!-- DataTables -->
     <script src="js/dataTables/jquery.dataTables.js"></script>
     <script src="js/dataTables/DT_bootstrap.js"></script>
@@ -72,7 +72,7 @@ $name = $name[0];
         <table class="table table-striped table-ordered">  
           <thead>
             <tr>
-              <th>Avg Marks</th>
+              <th>Average Marks</th>
               <th>GPA</th>
               <th>A%</th>
               <th>B%</th>
@@ -169,8 +169,16 @@ $name = $name[0];
       
     function genList(outID, elements) {
       var listOptions = '<li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">'+outID+' <b class="caret"></b></a><ul id="'+outID+'" class="dropdown-menu">';
-      for(var id in elements) {
-        listOptions += '<li><label for=\''+id+'\'><input id=\''+id+'\' type="checkbox" onclick="toggleAction(\''+id+'\', \''+outID+'\');" checked="true" />'+elements[id]+'</label></li>';
+      //Sort keys of hashtable
+      var keys = [];
+      for(var key in elements) {
+       if(elements.hasOwnProperty(key)) {
+         keys.push(key);
+       }
+      }
+      keys.sort();
+      for(var i in keys) {
+        listOptions += '<li><label for=\''+keys[i]+'\'><input id=\''+keys[i]+'\' type="checkbox" onclick="toggleAction(\''+keys[i]+'\', \''+outID+'\');" checked="true" />'+elements[keys[i]]+'</label></li>';
       }
       listOptions += "</ul></li>";
       $("div#dataTable_wrapper > div.row > div.span6:first > ul").append(listOptions);
@@ -184,7 +192,7 @@ $name = $name[0];
       var url = location.hash.substring(1).split(' ')[0];
       if(url.length == 0) { return false; }
 
-      /* Change to gold */
+  /* Change to gold */
       $("a.dropdown-toggle:first").toggleClass("prof-flash-gold");
 
       /* Find the request prof in our filter list */
@@ -197,7 +205,7 @@ $name = $name[0];
         });
         dataTable.fnSort([[2, 'desc']]); //Sort Year asc
       }
-      setTimeout(function() { $("a.dropdown-toggle:first").toggleClass("prof-flash-gold"); }, 250);
+     setTimeout(function() { $("a.dropdown-toggle:first").toggleClass("prof-flash-gold"); }, 250);
     }
 
     //prevent dropdown from closing upon selection
