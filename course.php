@@ -17,25 +17,24 @@ if(empty($_GET['id'])) {
   $db = new database;
 
 //Get Data
-  $name = $db->pdo->prepare("SELECT DISTINCT Course FROM Data WHERE courseID LIKE :id");
+  $courseName = $db->pdo->prepare("SELECT DISTINCT Course FROM Data WHERE courseID LIKE :id");
   $raw  = $db->pdo->prepare("SELECT profID, Prof, Size, ROUND(AVG(GPA),2), ROUND(AVG(A)), ROUND(AVG(B)), ROUND(AVG(C)), ROUND(AVG(D)), ROUND(AVG(F)), ROUND(AVG(W)) FROM Data WHERE courseID Like :id AND GPA != 0 GROUP BY Prof");
   $avg  = $db->pdo->prepare("SELECT ROUND(AVG(GPA),2), ROUND(AVG(A)), ROUND(AVG(B)), ROUND(AVG(C)), ROUND(AVG(D)), ROUND(AVG(F)) FROM Data WHERE courseID Like :id AND GPA !=0 ");
 
 //Check if query executes
-  if(!$name->execute(array(":id"=>$courseID)) || !$raw->execute(array(":id"=>$courseID)) || !$avg->execute(array(":id"=>$courseID))) {
+  if(!$courseName->execute(array(":id"=>$courseID)) || !$raw->execute(array(":id"=>$courseID)) || !$avg->execute(array(":id"=>$courseID))) {
     //Query failed TODO Better error handling - TRY - CATCH
     die("Uh-oh the database had an error!");
   }
 //Get course name
-$name = $name->fetch(PDO::FETCH_NUM);
-$name = $name[0];
+$courseName = $courseName->fetch(PDO::FETCH_NUM);
+$courseName = $courseName[0];
 ?>
 <!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="utf-8">
-    <title>Course Critique - <?php echo $name; ?></title>
- <!--   <meta name="viewport" content="width=device-width, initial-scale=1.0"> -->
+    <title>Course Critique - <?php echo $courseName; ?></title>
     <meta name="description" content="Historical Course GPA information provided by SGA">
     <meta name="author" content="SGA - Georgia Institute of Technology">
 
@@ -68,7 +67,7 @@ $name = $name[0];
 
     <div class="container">
       <div class="row">
-        <h2 style="text-align: center;"><?php echo $name; ?></h2>
+        <h2 style="text-align: center;"><?php echo $courseName; ?></h2>
         <div class="span6 center-table">
         <table class="table table-striped table-ordered">  
           <thead>
@@ -152,10 +151,7 @@ $name = $name[0];
         $("div#dataTable_wrapper > div.row > div.span6:first").append("<ul class=\"nav nav-pills\"></ul>")
         //Generate the buttons
         genList("Professors", profs);
-        
-      
     });
-    
 
     function genList(outID, elements) {
       var listOptions = '<li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">'+outID+' <b class="caret"></b></a><ul id="'+outID+'" class="dropdown-menu">';
@@ -168,7 +164,6 @@ $name = $name[0];
 
     function toggleAction(itemClass, menuName) {
       $("."+itemClass).toggleClass(menuName + "Disabled");
-//      $("."+itemClass).toggle('showOrHide');
     }
     //Script to prevent dropdown from closing upon selection
     $(function () {

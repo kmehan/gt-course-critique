@@ -16,25 +16,24 @@ if(empty($_GET['id'])) {
 //Connect to MySQL
   $db = new database;
 //Get data
-  $name = $db->pdo->prepare("SELECT DISTINCT Prof FROM Data WHERE profID LIKE :id");
+  $profName = $db->pdo->prepare("SELECT DISTINCT Prof FROM Data WHERE profID LIKE :id");
   $raw = $db->pdo->prepare("SELECT courseID, Course, Section, Year, Size, GPA, A, B, C, D, F, W FROM Data WHERE profID LIKE :id");
   $avg = $db->pdo->prepare("SELECT ROUND(AVG(GPA),2), ROUND(AVG(A)), ROUND(AVG(B)), ROUND(AVG(C)), ROUND(AVG(D)), ROUND(AVG(F)) FROM Data WHERE profID LIKE :id AND GPA !=0 GROUP BY Prof");
 
 //Check if query execute
-  if(!$raw->execute(array(":id"=>$profID)) || !$avg->execute(array(":id"=>$profID)) || !$name->execute(array(":id"=>$profID))) {
+  if(!$raw->execute(array(":id"=>$profID)) || !$avg->execute(array(":id"=>$profID)) || !$profName->execute(array(":id"=>$profID))) {
     //Query Failed TODO BETTER ERROR HANDLING - TRY - CATCH
-    die("Uh-Oh the database had an error");
+    die("Oh no, the critique had an error!");
   }
-//Get prof's name
-$name = $name->fetch(PDO::FETCH_NUM);
-$name = $name[0];
+  
+$profName = $profName->fetch(PDO::FETCH_NUM);
+$profName = $profName[0];
 ?>
 <!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="utf-8">
-    <title>Course Critique - <?php echo $name; ?></title>
- <!--   <meta name="viewport" content="width=device-width, initial-scale=1.0"> -->
+    <title>Course Critique - <?php echo $profName; ?></title>
     <meta name="description" content="Historical Course GPA information provided by SGA">
     <meta name="author" content="SGA - Georgia Institute of Technology">
 
@@ -67,7 +66,7 @@ $name = $name[0];
     <img src="beta_ribbon.png" class="beta-ribbon" alt="beta" />
     <div class="container">
       <div class="row">
-        <h2 style="text-align: center;"><?php echo $name; ?></h2>
+        <h2 style="text-align: center;"><?php echo $profName; ?></h2>
         <div class="span6 center-table">
         <table class="table table-striped table-ordered">  
           <thead>
@@ -164,7 +163,6 @@ $name = $name[0];
             genList("Terms", terms);
         //Filter out all but requested hash (if there is one)\
             urlhashFilter();
-        //
       });
       
     function genList(outID, elements) {
