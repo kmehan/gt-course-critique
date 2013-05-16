@@ -9,9 +9,9 @@ $rootURL = "http://critique.gatech.edu";
 class database {
   //MySQL credentials, app only needs read only access
   private $RDBMType = "mysql";  //In the PHP PDO format
-  private $username = "php-critique";
-  private $password = "R8zgKgZW3tUNYEUR7qT98xFb";
-  private $dbhost   = "web-db1.gatech.edu";
+  private $username = "**********";
+  private $password = "**********";
+  private $dbhost   = "**********";
   private $database = "critique_data";
   private $table    = "Data";
   
