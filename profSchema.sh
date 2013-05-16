@@ -6,7 +6,7 @@ MYSQL_USERNAME = "*****"
 MYSQL_PASSWORD = "*****"
 MYSQL_DATABASE_NAME = "Data"
 
-curl -XPUT "$ELASTICSEARCH_URL/_river/prof/_meta' -d '{
+curl -XPUT "$ELASTICSEARCH_URL/_river/prof/_meta" -d '{
     "type" : "jdbc",
     "jdbc" : {
         "driver" : "com.mysql.jdbc.Driver",
