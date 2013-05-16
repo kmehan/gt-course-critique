@@ -20,10 +20,10 @@ if(empty($_GET['id'])) {
   $raw = $db->pdo->prepare("SELECT courseID, Course, Section, Year, Size, GPA, A, B, C, D, F, W FROM Data WHERE profID LIKE :id");
   $avg = $db->pdo->prepare("SELECT ROUND(AVG(GPA),2), ROUND(AVG(A)), ROUND(AVG(B)), ROUND(AVG(C)), ROUND(AVG(D)), ROUND(AVG(F)) FROM Data WHERE profID LIKE :id AND GPA !=0 GROUP BY Prof");
 
-//Check if query execute
+//execute query and handle error
   if(!$raw->execute(array(":id"=>$profID)) || !$avg->execute(array(":id"=>$profID)) || !$profName->execute(array(":id"=>$profID))) {
-    //Query Failed TODO BETTER ERROR HANDLING - TRY - CATCH
-    die("Oh no, the critique had an error!");
+    $error = file_get_contents("404.html");
+    die($error);
   }
   
 $profName = $profName->fetch(PDO::FETCH_NUM);
