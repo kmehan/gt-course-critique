@@ -56,8 +56,8 @@ $courseName = $courseName[0];
         float: none !important;
       }
      .dropdown-menu {
-	max-height:325px;
-	overflow-y:scroll;
+  max-height:325px;
+  overflow-y:scroll;
      }
     </style>
   </head>
@@ -97,9 +97,9 @@ $courseName = $courseName[0];
         </div>
       </div>
     <!-- Table -->
-	<table class="table table-striped table-bordered" id="dataTable" style="margin-top: 10px;">
-	<thead>
-		<tr class="table-head" >
+  <table class="table table-striped table-bordered" id="dataTable" style="margin-top: 10px;">
+  <thead>
+    <tr class="table-head" >
       <th>Professor</th>
       <th>Size</th>
       <th class="avg">GPA</th>
@@ -109,29 +109,24 @@ $courseName = $courseName[0];
       <th class="avg">D%</th>
       <th class="avg">F%</th>
       <th class="avg">W%</th>
-		</tr>
-	</thead>
-	<tbody>
+    </tr>
+  </thead>
+  <tbody>
     <?php
       while($row=$raw->fetch(PDO::FETCH_NUM)) {
-        echo "<tr class=\"".$row[0]."\">\n";
-        for($i=0; $i<count($row); $i++) {
-          echo "<td>";
-          if($i==0) { 
-            //Dealing w/prof.  Generate link
-            echo "<a href=\"prof.php?id=".$row[$i]."#".$_GET['id']."\" >".$row[$i+1]."</a>";
-            $i++; //iterate i as we used 2 columns for this link
-          } else {
-            echo $row[$i];
-          }
-          echo "</td>\n";
+        echo  "<tr class=\"".$row[0]."\">" . 
+                "<td>" .
+                  "<a href=\"prof.php?id=".strtoupper($row[0])."#".$_GET['id']."\" >".$row[1]."</a>" .
+                "</td>";
+        for($i=2; $i<count($row); $i++) {
+          echo "<td>" . $row[$i] . "</td>";
         }
         echo "</tr>\n";
       } 
     ?>
-	</tbody>
+  </tbody>
 </table>
-			
+      
     <!-- javascript placed at end of the document so the pages load faster -->
     <script src="js/bootstrap.min.js"></script>
     <script src="js/application.js"></script>
@@ -182,5 +177,5 @@ Made by <a href="author">SGA Course Critique Committee</a>. Open source under <a
 
     </footer>
     </div>
-	</body>
+  </body>
 </html>

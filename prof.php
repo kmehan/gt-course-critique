@@ -115,17 +115,13 @@ $profName = $profName[0];
 	    <tbody>
       <?php
         while($row=$raw->fetch(PDO::FETCH_NUM)) {
-          echo "<tr class=\"$row[0] ".str_replace(" ","",$row[3])."\" >\n"; //Classes here are used in filter drop downs
-          for($i=0; $i<count($row); $i++) {
-            echo "<td>";
-            if($i==0) {
-              //Dealing w/course.  Generate link
-              echo "<a class=\"courseName\" href=\"course.php?id=$row[$i]\" >".$row[$i+1]."</a>";
-              $i++; //iterate i as we used 2 columns for this link
-            } else {
-              echo $row[$i];
-            }
-            echo "</td>\n";
+          //Classes in row are used in filter drop downs
+          echo  "<tr class=\"$row[0] ".str_replace(" ","",$row[3])."\" >" .
+                  "<td>" . 
+                    "<a class=\"courseName\" href=\"course.php?id=$row[0]\" >" . $row[1] . "</a>" .
+                  "</td>";
+          for($i=2; $i<count($row); $i++) {
+            echo "<td>" . $row[$i] . "</td>";
           }
           echo "</tr>\n";
         }
