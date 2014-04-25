@@ -18,7 +18,7 @@ if(empty($_GET['id'])) {
 //Get data
   $profName = $db->pdo->prepare("SELECT DISTINCT Prof FROM Data WHERE profID LIKE :id");
   $raw = $db->pdo->prepare("SELECT courseID, Course, Section, Year, Size, GPA, A, B, C, D, F, W FROM Data WHERE profID LIKE :id");
-  $avg = $db->pdo->prepare("SELECT ROUND(AVG(GPA),2), ROUND(AVG(A)), ROUND(AVG(B)), ROUND(AVG(C)), ROUND(AVG(D)), ROUND(AVG(F)) FROM Data WHERE profID LIKE :id AND GPA !=0 GROUP BY Prof");
+  $avg = $db->pdo->prepare("SELECT DISTINCT Course, ROUND(AVG(GPA),2), ROUND(AVG(A)), ROUND(AVG(B)), ROUND(AVG(C)), ROUND(AVG(D)), ROUND(AVG(F)) FROM Data WHERE profID LIKE :id AND GPA !=0 GROUP BY Prof");
 
 //execute query and handle error
   if(!$raw->execute(array(":id"=>$profID)) || !$avg->execute(array(":id"=>$profID)) || !$profName->execute(array(":id"=>$profID))) {
@@ -81,16 +81,16 @@ $profName = $profName[0];
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <td></td>
             <?php
               //Get the avg
-              $avg = $avg->fetch(PDO::FETCH_NUM);
-              foreach($avg as $value) {
-                echo "<td>$value</td>";
+              while($row=$avg->fetch(PDO::FETCH_NUM)) {
+                echo "<tr>\n";
+                foreach($row as $value) {
+                  echo "<td>$value</td>";
+                }
+                echo "</tr>\n";
               }
             ?>
-            </tr>
           </tbody>
         </table>
         </div>
