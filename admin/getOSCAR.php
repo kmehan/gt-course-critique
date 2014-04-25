@@ -24,7 +24,7 @@ while(!$found) {
 	}
 	$termNum = $year . "0" . $cur_sem;
 	//Get list of all courses
-	$ch = curl_init("https://oscar.gatech.edu/pls/bprod/bwckctlg.p_disp_course_detail?cat_term_in=201308&subj_code_in=$department&crse_numb_in=$course_number");
+	$ch = curl_init("https://oscar.gatech.edu/pls/bprod/bwckctlg.p_disp_course_detail?cat_term_in=$termNum&subj_code_in=$department&crse_numb_in=$course_number");
 	curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "GET");                                                                     
 	curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);                                                                      
 	$html =  curl_exec($ch);
