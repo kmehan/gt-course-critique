@@ -1,0 +1,29 @@
+.author-info h4 {
+    margin-bottom:0px;
+    text-decoration: underline;
+    color:rgb(85, 85, 85);
+    font-size:18.5px;
+}
+.author-info {
+    text-align: center;
+}
+.author-page-title h1 {
+    font-size:70px;
+}
+.author-page-title p {
+    margin-top: 22px;
+    font-size:35px;
+}
+.author-pic {
+    width:160px;
+    height:160px;
+}
+.author-title {
+    display:block;
+    font-size:17px;
+    margin-bottom:3px;
+}
+/* Override from bootstrap */
+.row {
+    margin-bottom: 20px;
+}
