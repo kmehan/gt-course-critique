@@ -47,29 +47,20 @@ $avg = $avg->fetch(PDO::FETCH_NUM);
         <link href="bootstrap.min.css" rel="stylesheet"> 
         <link href="default/bootstrap-responsive.min.css" rel="stylesheet">  
         <link href="css/bootswatch.css" rel="stylesheet">
+        <link href="css/critique.css" rel="stylesheet">
         <script src="js/jquery.min.js"></script>
-        
+
         <!-- DataTables -->
         <script src="js/dataTables/jquery.dataTables.js"></script>
         <script src="js/dataTables/DT_bootstrap.js"></script>
         <link rel="stylesheet" type="text/css" href="css/dataTables/DT_bootstrap.css">
-        <style>
-            .center-table {
-                margin: 0 auto !important;
-                float: none !important;
-            }
-            .dropdown-menu {
-                max-height:325px;
-                overflow-y:scroll;
-            }
-        </style>
     </head>
 
     <body>
         <img src="beta_ribbon.png" class="beta-ribbon" alt="beta" />
         <div class="container">
             <div class="row">
-                <h2 style="text-align: center;"><?=$courseName ?></h2>
+                <h2 style="text-align: center;"><?= $courseName ?></h2>
                 <div class="span6 center-table">
                     <table class="table table-striped table-ordered">  
                         <thead>

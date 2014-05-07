@@ -46,22 +46,13 @@ $avg = $avg->fetch(PDO::FETCH_NUM);
         <link href="bootstrap.min.css" rel="stylesheet">
         <link href="default/bootstrap-responsive.min.css" rel="stylesheet"> 
         <link href="css/bootswatch.css" rel="stylesheet">
+        <link href="css/critique.css" rel="stylesheet">
         <script src="js/jquery.min.js"></script>
+        
         <!-- DataTables -->
         <script src="js/dataTables/jquery.dataTables.js"></script>
         <script src="js/dataTables/DT_bootstrap.js"></script>
-        <link rel="stylesheet" type="text/css" href="css/dataTables/DT_bootstrap.css">
-        <style>
-            .center-table {
-                margin: 0 auto !important;
-                float: none !important;
-            }
-            .dropdown-menu {
-                max-height:325px;
-                overflow-y:scroll;
-            }
-            .prof-flash-gold { background-color: rgb(177, 142, 95) !important; }
-        </style>
+        <link href="css/dataTables/DT_bootstrap.css" rel="stylesheet" >
     </head>
 
     <body>
