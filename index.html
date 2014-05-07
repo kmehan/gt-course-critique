@@ -1,107 +1,105 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <title>Course Critique</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Historical grade point average (GPA) for professors and courses offered at the Georgia Institute of Technology">
-    <meta name="author" content="SGA - Georgia Institute of Technology">
+    <head>
+        <meta charset="utf-8">
+        <title>Course Critique</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="Historical grade point average (GPA) for professors and courses offered at the Georgia Institute of Technology">
+        <meta name="author" content="SGA - Georgia Institute of Technology">
 
-    <!--[if lt IE 9]>
-      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
-    <![endif]-->
+        <!--[if lt IE 9]>
+          <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+        <![endif]-->
 
-    <link href="bootstrap.min.css" rel="stylesheet">
-    <link href="default/bootstrap-responsive.min.css" rel="stylesheet"> 
-    <link href="css/bootswatch.css" rel="stylesheet">
-    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
-    <!-- Move page down a bit for a nicer look-->
-    <style> body { padding-top:60px; } </style>
-  </head>
+        <link href="bootstrap.min.css" rel="stylesheet">
+        <link href="default/bootstrap-responsive.min.css" rel="stylesheet"> 
+        <link href="css/bootswatch.css" rel="stylesheet">
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+        
+        <!-- Move page down a bit for a nicer look-->
+        <style> body { padding-top:60px; } </style>
+    </head>
 
-  <body>
-<!-- Beta Ribbon -->
-<img src="beta_ribbon.png" class="beta-ribbon" alt="beta" />
-  <!-- Masthead
-  ================================================== -->
-  <div class="container">
-  <header class="jumbotron subhead" id="overview">
-    <div class="row">
-      <div class="span7">
-        <h1>Course Critique</h1>
-        <p class="lead">Type in a Professor or Course Name</p>
-      </div>
-    </div>
-  </header>
+    <body>
+        
+        <!-- Beta Ribbon -->
+        <img src="beta_ribbon.png" class="beta-ribbon" alt="beta" />
+        
+        <!-- Masthead
+        ================================================== -->
+        <div class="container">
+            <header class="jumbotron subhead" id="overview">
+                <div class="row">
+                    <div class="span7">
+                        <h1>Course Critique</h1>
+                        <p class="lead">Type in a Professor or Course Name</p>
+                    </div>
+                </div>
+            </header>
 
-  <!-- Search Bar
-  ================================================== -->
-<!--      <form class="form-horizontal" onsubmit="return false;" > -->
-      <div class="form-horizontal" style="padding-bottom: 15px;">
-        <input type="text" class="input-xxlarge" name="query" id="searchbox" placeholder="e.g. Math 1502" autocomplete="off">
-        <script>
-        function submitSearch() { search($("#searchbox").val()); }
-    
-        $(document).ready(function() {
-          $("#searchbox").keyup(function(event) { 
-            clearTimeout($(this).data('timer'));
-            var search = $(this).val();
-            if(search.length >= 3) {
-              $(this).data('timer', setTimeout(function() { 
-                submitSearch();
-              }, 333)); //only query every 1/3 sec.
-            }
-          });
-        });
-        </script>
-        <button type="submit" id="searchSub" class="btn btn-primary" onclick="submitSearch();">Search</button>
-      </div>
-<!-- Progress bars
-================================================== -->
+            <!-- Search Bar
+            ================================================== -->
+            <div class="form-horizontal" style="padding-bottom: 15px;">
+                <input type="text" class="input-xxlarge" name="query" id="searchbox" placeholder="e.g. Math 1502" autocomplete="off">
+                <script>
+                    function submitSearch() {
+                        search($("#searchbox").val());
+                    }
 
+                    $(document).ready(function() {
+                        $("#searchbox").keyup(function(event) {
+                            clearTimeout($(this).data('timer'));
+                            var search = $(this).val();
+                            if (search.length >= 3) {
+                                $(this).data('timer', setTimeout(function() {
+                                    submitSearch();
+                                }, 333)); //only query every 1/3 sec.
+                            }
+                        });
+                    });
+                </script>
+                <button type="submit" id="searchSub" class="btn btn-primary" onclick="submitSearch();">Search</button>
+            </div>
+            
+            <!-- Progress bars
+            ================================================== -->
+            <div class="row">
+                <div class="span12">
+                    <div class="progress search" style="height: 1px;">
+                        <div class="bar" style="width: 100%;"></div>
+                    </div>
+                </div>
+            </div>
+            <div id="searchResults">
+                <div id="topHits">
+                    <table>
+                        <thead>
+                            <tr><td>Example Searches:</td></tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>ECE 3020</td></tr>
+                            <tr><td>PHYS 2212</td></tr>
+                            <tr><td>George P. Burdell</td></tr>
+                        </tbody>
+                    </table>	
+                </div>
+            </div>
 
+            <!-- Footer
+             ================================================== -->
+            <hr>
+            <footer id="footer">
+                <p class="pull-right"><a href="#">Back to top</a></p>
+                <div class="links"></div>
+                Made by <a href="author">SGA Course Critique Committee</a>. Open source under <a href="http://www.gnu.org/licenses/gpl.html">GPLv3</a> where applicable. 
+                Fork us at <a href="https://github.com/cobookman/gt-course-critique">github</a>.<br />
+            </footer>
+        </div><!-- /container -->
 
-  <div class="row">
-    <div class="span12">
-      <div class="progress search" style="height: 1px;">
-        <div class="bar" style="width: 100%;"></div>
-      </div>
-    </div>
-  </div>
-  <div id="searchResults">
-    <div id="topHits">
-    	<table>
-      	<thead>
-      		<tr><td>Example Searches:</td></tr>
-      	</thead>
-      	<tbody>
-      		<tr><td>ECE 3020</td></tr>
-      		<tr><td>PHYS 2212</td></tr>
-      		<tr><td>George P. Burdell</td></tr>
-        </tbody>
-    	</table>	
-    </div>
-  </div>
- 
-
-     <!-- Footer
-      ================================================== -->
-      <hr>
-
-      <footer id="footer">
-        <p class="pull-right"><a href="#">Back to top</a></p>
-        <div class="links">
-        </div>
-        Made by <a href="author">SGA Course Critique Committee</a>. Open source under <a href="http://www.gnu.org/licenses/gpl.html">GPLv3</a> where applicable. Fork us at <a href="https://github.com/cobookman/gt-course-critique">github</a>.<br />
-      </footer>
-    </div><!-- /container -->
-
-    <!-- Le javascript
-    ================================================== -->
-    <!-- Placed at the end of the document so the pages load faster -->
-    <script src="js/bootstrap.min.js"></script>
-    <script src="js/application.js"></script>
-    <script src="js/bootswatch.js"></script>
-    <script src="js/searchResults.js"></script>
-  </body>
+        <!-- Placed at the end of the document so the pages load faster -->
+        <script src="js/bootstrap.min.js"></script>
+        <script src="js/application.js"></script>
+        <script src="js/bootswatch.js"></script>
+        <script src="js/searchResults.js"></script>
+    </body>
 </html>
