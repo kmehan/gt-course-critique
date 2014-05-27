@@ -1,0 +1,43 @@
+.dataTables_paginate > ul > li.active > a {
+    background-color: #003049 !important;
+}
+
+.dataTables_paginate > ul > li:not(.disabled) > a:hover{
+    background-color: #B18E5F !important;
+    color: white !important;
+}
+
+.avg {
+    text-decoration: overline;
+}
+
+.CoursesDisabled , .TermsDisabled, .ProfessorsDisabled {
+    display: none;
+}
+
+.beta-ribbon {
+    position: fixed;
+    pointer-events: none;
+    top: 0px;
+    left: 0px;
+    height: 75px;
+    z-index: 1;
+}
+
+.center-table {
+    margin: 0 auto !important;
+    float: none !important;
+}
+
+.dropdown-menu {
+    max-height:325px;
+    overflow-y:scroll;
+}
+
+.prof-flash-gold {
+    background-color: rgb(177, 142, 95) !important;
+}
+
+body.extra-space-top {
+    padding-top:60px;
+}

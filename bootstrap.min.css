@@ -932,8 +932,3 @@ a.thumbnail{background-color:#dfdfdf;}a.thumbnail:hover{background-color:#bbbbbb
 .show{display:block;}
 .invisible{visibility:hidden;}
 .affix{position:fixed;}
-.dataTables_paginate > ul > li.active > a { background-color: #003049 !important; }
-.dataTables_paginate > ul > li:not(.disabled) > a:hover{ background-color: #B18E5F !important; color: white !important;}
-.avg { text-decoration: overline; }
-.CoursesDisabled , .TermsDisabled, .ProfessorsDisabled { display: none; }
-.beta-ribbon { position: fixed; pointer-events: none; top: 0px; left: 0px; height: 75px; z-index: 1; }
