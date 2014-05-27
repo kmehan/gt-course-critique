@@ -1,28 +1,27 @@
-var clippy_easter_hold = false;
+/* searchResults.js */
+var temp = ""; /* Set in showSearch */
+
 function search(query) {
-  if(query=="George P. Burdell" || query=="Colin Bookman") {
-    clippy_easter();
+  if(typeof search_easter === 'function') {
+    search_easter(query);
   }
-  if($.trim(query)==0) {
+  else if($.trim(query)==0) {
     return false;
   }
+  //TODO: the * will hit performance quite a bit, may need to be removed
   $.ajax({
         type: "GET",
         url:  "/search.php",
-        data: 'query='+query, //the * will hit performance quite a bit, may need to be removed
+        data: 'query='+query,
         dataType: "JSON",
         success: function(msg) { showSearch(msg); }
   });
   return true;
 }
-var temp ="";
 function showSearch(msg) {
   if(msg.error) {  //No results
     $("#searchResults").html("<h3>Error with query syntax</h3>");
     return false;
-  } else if(msg.hits.total==0) {
- //   $("#searchResults").html("<h5>0 documents in: " + msg.took + "ms</h5>");
- //   return true;
   }
   //Output number of hits...etc
   temp = msg;
@@ -44,40 +43,6 @@ function showSearch(msg) {
     //End tags
       output += "</p></div>";
   }
-$("#searchResults").html(output);
-return true;
+  $("#searchResults").html(output);
+  return true;
 }
-function clippy_easter() {
-  if(clippy_easter_hold == false) {
-    clippy_easter_hold = true;
-  } else {
-    return false;
-  }
-  //Load Clippy CSS
-  $('head').append('<link rel="stylesheet" href="js/clippy/build/clippy.css" type="text/css" />');
-  //Load clippy js
-  $.getScript("js/clippy/build/clippy.min.js").done(function() {
-    //Random clippy
-    var agents = ["Bonzi", "Genius", "Clippy", "F1", "Genie", "Links", "Merlin", "Rover"];
-    agents = agents[Math.floor(Math.random()*agents.length)];
-    clippy.load(agents, function(agent) {
-      agent.show();
-      agent.speak("You Found Me! How about we sing a song?   ");
-      setTimeout(function() {
-        if(window.HTMLAudioElement) {
-          var snd = new Audio('');
-          if(snd.canPlayType('audio/mp3')) {
-            snd = new Audio('js/clippy/R-Wreck-vocal.mp3');
-          } else if(snd.canPlayType('audio/ogg')) {
-            snd = new Audio('js/clippy/R-Wreck-vocal.ogg');
-          }
-          snd.play();
-        } else {
-          agent.speak("Seems your browser doesn't support HTML5, maybe next time");
-        }
-        var random = setInterval(function() { agent.animate(); }, 1000);
-      }, 3000);
-    });
-  })
-}
-
