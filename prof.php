@@ -5,10 +5,8 @@
 include("config.php");
 
 // Check if the ID is set/non-empty.
-if (empty($_GET['id'])) {
+if(!isset($_GET['id']) || ($profID = trim($_GET['id'])) == null || preg_match($profRegex, $profID) !== 1) {
     header("Location: $rootURL"); //Redirect back to searchbar
-} else {
-    $profID = $_GET['id'];
 }
 
 //Connect to MySQL
