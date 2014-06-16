@@ -3,6 +3,8 @@
 
 //Search bar location (user facing)
 $rootURL = "http://critique.gatech.edu";
+$profRegex = '/^[A-Za-z\-]+$/';
+$clssRegex = '/^[A-Z]{2,5}[0-9]{3,4}$/';
 
 class database {
 
