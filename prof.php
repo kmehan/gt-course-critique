@@ -14,9 +14,9 @@ if (empty($_GET['id'])) {
 //Connect to MySQL
 $db = new database;
 //Get data
-$profName = $db->pdo->prepare("SELECT DISTINCT Prof FROM Data WHERE profID LIKE :id");
-$raw = $db->pdo->prepare("SELECT courseID, Course, Section, Year, Size, GPA, A, B, C, D, F, W FROM Data WHERE profID LIKE :id");
-$avg = $db->pdo->prepare("SELECT ROUND(AVG(GPA),2), ROUND(AVG(A)), ROUND(AVG(B)), ROUND(AVG(C)), ROUND(AVG(D)), ROUND(AVG(F)) FROM Data WHERE profID LIKE :id AND GPA !=0 GROUP BY Prof");
+$profName = $db->pdo->prepare("SELECT DISTINCT Prof FROM Data WHERE profID = :id");
+$raw = $db->pdo->prepare("SELECT courseID, Course, Section, Year, Size, GPA, A, B, C, D, F, W FROM Data WHERE profID = :id");
+$avg = $db->pdo->prepare("SELECT ROUND(AVG(GPA),2), ROUND(AVG(A)), ROUND(AVG(B)), ROUND(AVG(C)), ROUND(AVG(D)), ROUND(AVG(F)) FROM Data WHERE profID = :id AND GPA != 0 GROUP BY Prof");
 
 //execute query and handle error
 if (!$raw->execute(array(":id" => $profID)) || !$avg->execute(array(":id" => $profID)) || !$profName->execute(array(":id" => $profID))) {

@@ -16,9 +16,9 @@ if (empty($_GET['id'])) {
 $db = new database;
 
 //Get Data
-$courseName = $db->pdo->prepare("SELECT DISTINCT Course FROM Data WHERE courseID LIKE :id");
-$raw = $db->pdo->prepare("SELECT profID, Prof, Size, ROUND(AVG(GPA),2), ROUND(AVG(A)), ROUND(AVG(B)), ROUND(AVG(C)), ROUND(AVG(D)), ROUND(AVG(F)), ROUND(AVG(W)) FROM Data WHERE courseID Like :id AND GPA != 0 GROUP BY Prof");
-$avg = $db->pdo->prepare("SELECT ROUND(AVG(GPA),2), ROUND(AVG(A)), ROUND(AVG(B)), ROUND(AVG(C)), ROUND(AVG(D)), ROUND(AVG(F)) FROM Data WHERE courseID Like :id AND GPA !=0");
+$courseName = $db->pdo->prepare("SELECT DISTINCT Course FROM Data WHERE courseID = :id");
+$raw = $db->pdo->prepare("SELECT profID, Prof, Size, ROUND(AVG(GPA),2), ROUND(AVG(A)), ROUND(AVG(B)), ROUND(AVG(C)), ROUND(AVG(D)), ROUND(AVG(F)), ROUND(AVG(W)) FROM Data WHERE courseID = :id AND GPA != 0 GROUP BY Prof");
+$avg = $db->pdo->prepare("SELECT ROUND(AVG(GPA),2), ROUND(AVG(A)), ROUND(AVG(B)), ROUND(AVG(C)), ROUND(AVG(D)), ROUND(AVG(F)) FROM Data WHERE courseID = :id AND GPA != 0");
 
 //execute query and handle error
 if (!$courseName->execute(array(":id" => $courseID)) || !$raw->execute(array(":id" => $courseID)) || !$avg->execute(array(":id" => $courseID))) {
