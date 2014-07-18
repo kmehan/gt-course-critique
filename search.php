@@ -10,6 +10,7 @@ if (empty($_GET['query'])) {
 }
 $queryString = trim($_GET['query']);
 $queryString = str_replace($blacklist, "", $queryString);
+$queryString = preg_replace('/^([A-Za-z]*)(\d*)$/', '$1 $2', $queryString);
 $ch = curl_init('http://web-misc1.gatech.edu:9200/class,prof/_search');
 $qry = '{
           "query" : { 
