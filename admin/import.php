@@ -88,6 +88,3 @@ foreach($_input as $file => $count) {
     }
 }
 echo "\nDone! \n";
-foreach($_input as $file => $count) {
-
-}
