@@ -41,7 +41,7 @@ $avg = $avg->fetch(PDO::FETCH_NUM);
         <meta name="author" content="SGA - Georgia Institute of Technology">
 
         <!--[if lt IE 9]>
-          <script src="https://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+          <script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script>
         <![endif]-->
 
         <link href="css/bootstrap.min.css" rel="stylesheet"> 
