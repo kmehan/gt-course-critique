@@ -55,7 +55,7 @@ foreach($_input as $file => $count) {
     $sql = '';
     $counter = 0;
     foreach($csv as $row) {
-        $name = explode(',', str_replace("'", "''", $row[4])); // Now [lastname, firstname]
+        $name = explode(',', preg_replace("/'/", "''", $row[4])); // Now [lastname, firstname]
         $course = explode(' ', $row[1]); // Now [department, number]
         $term = $_term[substr($row[0], 4, 2)] . ' ' . substr($row[0], 0, 4);
         
