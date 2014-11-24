@@ -41,10 +41,10 @@ $avg = $avg->fetch(PDO::FETCH_NUM);
         <meta name="author" content="SGA - Georgia Institute of Technology">
 
         <!--[if lt IE 9]>
-          <script src="https://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+          <script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script>
         <![endif]-->
 
-        <link href="bootstrap.min.css" rel="stylesheet"> 
+        <link href="css/bootstrap.min.css" rel="stylesheet"> 
         <link href="default/bootstrap-responsive.min.css" rel="stylesheet">  
         <link href="css/bootswatch.css" rel="stylesheet">
         <link href="css/critique.css" rel="stylesheet">
@@ -57,7 +57,7 @@ $avg = $avg->fetch(PDO::FETCH_NUM);
     </head>
 
     <body>
-        <img src="beta_ribbon.png" class="beta-ribbon" alt="beta" />
+        <img src="img/beta_ribbon.png" class="beta-ribbon" alt="beta" />
         <div class="container">
             <div class="row">
                 <h2 style="text-align: center;"><?= $courseName ?></h2>
