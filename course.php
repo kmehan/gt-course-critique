@@ -6,10 +6,8 @@
 include("config.php");
 
 //Check if the ID is set/non-empty
-if (empty($_GET['id'])) {
+if(!isset($_GET['id']) || ($courseID = trim($_GET['id'])) == null || preg_match($clssRegex, $courseID) !== 1) {
     header("Location: $rootURL"); //Redirect back to searchbar
-} else {
-    $courseID = $_GET['id'];
 }
 
 //Connect to MySQL
